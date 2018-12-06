@@ -1,0 +1,24 @@
+.header{
+    background-color: rgb(67,74,80);
+}
+.login-wrap{
+    background: #324157;
+}
+.plugins-tips{
+    background: #eef1f6;
+}
+.plugins-tips a{
+    color: #20a0ff;
+}
+.el-upload--text em {
+    color: #20a0ff;
+}
+.pure-button{
+    background: rgb(67,74,80);
+}
+.message-title{
+    color: #20a0ff;
+}
+.collapse-btn:hover{
+    background: rgba(67,74,80,0.6);
+}

@@ -34,23 +34,37 @@
   	  return {
   	  	collapse: false,
   	  	items:[
+          {
+            icon: 'el-icon-setting',
+            index: 'index',
+            title: '系统首页'
+          },
+          {
+            icon: 'el-icon-setting',
+            index: 'table',
+            title: '基本表格'
+          },
   	  	  {
   	  	  	icon: 'el-icon-setting',
   	  	  	index: '1',
-  	  	  	title: '人事管理',
+  	  	  	title: '表单相关',
   	  	  	subs:[
   	  	  	  {
   	  	  	  	index: 'staff',
-  	  	  	  	title: '员工管理'
+  	  	  	  	title: '基本表单'
   	  	  	  },
   	  	  	  {
   	  	  	  	index: 'everyday',
-  	  	  	  	title: '每日绩效'
+  	  	  	  	title: '富文本编辑器'
   	  	  	  },
-  	  	  	  {
-  	  	  	  	index: 'achievements',
-  	  	  	  	title: '绩效管理'
-  	  	  	  }
+              {
+                index: 'markdown',
+                title: 'markdown编辑器'
+              },
+              {
+                index: 'upload',
+                title: '上传文件'
+              }
   	  	  	]
   	  	  }
   	  	]

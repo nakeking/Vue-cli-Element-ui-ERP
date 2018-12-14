@@ -4,7 +4,7 @@
   		<div class="table" :class="{'table-right': gxshow}">
         <div class="crumbs">
             <el-breadcrumb separator="/">
-                <el-breadcrumb-item><i class="el-icon-tickets"></i>每日绩效</el-breadcrumb-item>
+                <el-breadcrumb-item><i class="el-icon-tickets"></i>基本表格</el-breadcrumb-item>
             </el-breadcrumb>
         </div>
         <div class="container">
@@ -37,6 +37,11 @@
                 </el-table-column>
                 <el-table-column prop="bz" label="备注">
                 </el-table-column>
+                <el-table-column label="操作" width="100">
+                  <template slot-scope="scope">
+                    <el-button size="small" >查看</el-button>
+                  </template>
+                </el-table-column>
             </el-table>
             <div class="pagination">
                 <el-pagination @current-change="handleCurrentChange" layout="prev, pager, next" :total="10">
@@ -53,6 +58,9 @@
         </div>
     </div>
     <!--表格结束-->
+    <!---->
+
+    <!--侧边选择栏-->
     <div class="gxList" :class="{gxshow: gxshow}">
       <i class="el-icon-d-arrow-left" :class="{iright: gxshow}" @click="gxshow = !gxshow"></i>
       <el-menu

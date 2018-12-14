@@ -6,6 +6,20 @@ const Views = (resolve) => {
 	import('components/Views/Views').then(module => {
 		resolve(module);
 	})
+} 
+
+//登入
+const Login = resolve => {
+	import('views/Login').then(module => {
+		resolve(module);
+	})
+}
+
+//首页
+const Index = resolve => {
+	import('views/Index').then(module => {
+		resolve(module);
+	})
 }
 
 //人事管理
@@ -22,8 +36,8 @@ const Everyday = (resolve) => {
 	})
 }
 
-const Achievements = (resolve) => {
-	import('views/Person/Achievements').then(module => {
+const Table = (resolve) => {
+	import('views/Table').then(module => {
 		resolve(module);
 	})
 }
@@ -34,7 +48,7 @@ export default new Router({
 	routes: [
 		{
 			path: '/',
-			redirect: '/staff'
+			redirect: '/index'
 		},
 		{
 			path: '/',
@@ -52,11 +66,23 @@ export default new Router({
 					meta: {title: '每日绩效'}
 				},
 				{
-					path: '/achievements',
-					component: Achievements,
+					path: '/table',
+					component: Table,
 					meta: {title: '绩效管理'}
+				},
+				{
+					path: '/index',
+					component: Index,
+					meta: {title: '首页'},
+					name: 'index'
 				}
 			]
+		},
+		{
+			path: '/login',
+			name: 'login',
+			meta: '登入',
+			component: Login
 		}
 	]
 })

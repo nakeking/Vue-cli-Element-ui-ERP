@@ -10,6 +10,15 @@ import axios from 'axios'
 import {Axios} from 'api/api';
 Vue.prototype.$axios = Axios;
 
+//路由判断是否登入
+router.beforeEach((to,  form, next) => {
+	let role = localStorage.getItem('username');
+	if(!role && to.path !== '/login'){
+		next('/login')
+	}else{
+		next();
+	}
+});
 
 Vue.use(ElementUI, { size: 'small' })
 Vue.config.productionTip = false

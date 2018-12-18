@@ -13,4 +13,5 @@ export default {
 <style>
   @import "../static/css/main.css";
   @import "../static/css/color-dark.css"; 
+  @import "../static/icon/iconfont.css";
 </style>

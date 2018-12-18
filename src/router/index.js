@@ -22,10 +22,9 @@ const Index = resolve => {
 	})
 }
 
-//人事管理
-//员工管理
-const Staff = (resolve) => {
-	import('views/Person/Staff').then(module => {
+//表单相关
+const BasicForm = (resolve) => {
+	import('views/Person/BasicForm').then(module => {
 		resolve(module);
 	})
 }
@@ -38,6 +37,13 @@ const Everyday = (resolve) => {
 
 const Table = (resolve) => {
 	import('views/Table').then(module => {
+		resolve(module);
+	})
+}
+
+//拖拽
+const Draggable = resolve => {
+	import('views/Draggable/Draggable').then(module => {
 		resolve(module);
 	})
 }
@@ -56,9 +62,9 @@ export default new Router({
 			meta: '视窗',
 			children: [
 				{
-					path: '/staff',
-					component: Staff,
-					meta: {title: '员工管理'}
+					path: '/basicform',
+					component: BasicForm,
+					meta: {title: '基本表单'}
 				},
 				{
 					path: '/everyday',
@@ -68,13 +74,19 @@ export default new Router({
 				{
 					path: '/table',
 					component: Table,
-					meta: {title: '绩效管理'}
+					meta: {title: '基本表格'}
 				},
 				{
 					path: '/index',
 					component: Index,
 					meta: {title: '首页'},
 					name: 'index'
+				},
+				{
+					path: '/draggable',
+					name: 'draggable',
+					meta: {title: '模块拖拽'},
+					component: Draggable
 				}
 			]
 		},

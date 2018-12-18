@@ -44,13 +44,18 @@
             index: 'table',
             title: '基本表格'
           },
+          {
+            icon: 'el-icon-setting',
+            index: 'draggable',
+            title: '模块拖拽'
+          },
   	  	  {
   	  	  	icon: 'el-icon-setting',
   	  	  	index: '1',
   	  	  	title: '表单相关',
   	  	  	subs:[
   	  	  	  {
-  	  	  	  	index: 'staff',
+  	  	  	  	index: 'basicform',
   	  	  	  	title: '基本表单'
   	  	  	  },
   	  	  	  {

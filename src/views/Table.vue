@@ -39,7 +39,7 @@
                 </el-table-column>
                 <el-table-column label="操作" width="100">
                   <template slot-scope="scope">
-                    <el-button size="small" >查看</el-button>
+                    <el-button size="small" @click="handleSee(scope.row, scope.$index)">查看</el-button>
                   </template>
                 </el-table-column>
             </el-table>
@@ -58,7 +58,23 @@
         </div>
     </div>
     <!--表格结束-->
-    <!---->
+    <!--模态框-->
+    <el-dialog title="查看" width="30%" :visible.sync="seeVisible">
+      <el-form ref="form" :model="achievement" label-width="50px">
+        <el-form-item label="日期">
+          <el-date-picker type="date" v-model="achievement.cjsj" value-format="yyyy-MM-dd" style="width: 100%"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="姓名">
+          <el-input v-model="achievement.name"></el-input>
+        </el-form-item>
+        <el-form-item label="工资">
+          <el-input v-model="achievement.je"></el-input>
+        </el-form-item>
+        <el-form-item label="备注">
+          <el-input v-model="achievement.bz"></el-input>
+        </el-form-item>
+      </el-form>
+    </el-dialog>
 
     <!--侧边选择栏-->
     <div class="gxList" :class="{gxshow: gxshow}">
@@ -85,6 +101,7 @@
   	  return {
   	  	gxshow: false,
   	  	select_name: '',
+        achievement: {},
   	  	achievementsList:[
   	  		{
   	  			name: '小明',
@@ -109,7 +126,8 @@
   	  			cjsj: '2018-11-13'
   	  		}
   	  	],
-        gxList:[]
+        gxList:[],
+        seeVisible: false
   	  }
   	},
   	computed:{
@@ -129,6 +147,7 @@
       this.getAchievements();
   	},
   	methods:{
+      //获取用户列表
       getAchievements(){
         this.$axios('getGxList').then((res) => {
           this.gxList = res;
@@ -136,6 +155,7 @@
           console.log(err);
         })
       },
+      //获取工序列表
   	  getGxList(){
   	  	this.$axios('getGxList').then((res) => {
   	  		this.gxList = res;
@@ -155,6 +175,7 @@
   	  	}
   	  	return total + '￥';
   	  },
+      //计算总金额
       inputTotal(index, i){
         let total = 0;
         for(let i=0; i<this.achievementsList[index].gxsl.length; i++){
@@ -182,15 +203,22 @@
   	  	this.achievementsList[index].gxsl.splice(i, 1);
   	  	this.$set(this.achievementsList[index], "gxsl", this.achievementsList[index].gxsl);
   	  },
+      //查看信息
+      handleSee(row, index){
+        console.log(row, this.achievementsList[index]);
+        this.achievement = this.achievementsList[index];
+        this.seeVisible = true;
+      },
   	  search(){
 
   	  },
-	  handleCurrentChange(){
+  	  handleCurrentChange(){
 
-	  },
-	  confirm(){
-	  	console.log(this.achievementsList);
-	  }
+  	  },
+      //确认提交
+  	  confirm(){
+  	  	console.log(this.achievementsList);
+  	  }
   	}
   }
 </script>

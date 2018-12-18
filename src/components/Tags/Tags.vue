@@ -75,6 +75,8 @@
   overflow: hidden;
   background: #fff;
   padding-right: 120px;
+  box-shadow: 0 2px 5px #ddd;
+  z-index: 999;
   ul {
     box-sizing: border-box;
     width: 100%;

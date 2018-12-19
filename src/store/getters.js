@@ -17,3 +17,7 @@ export const navList = function(state){
 export const editModel = function(state){
 	return state.editModel
 }
+
+export const currModular = function(state){
+	return state.currModular
+}

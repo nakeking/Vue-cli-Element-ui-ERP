@@ -47,7 +47,7 @@
           {
             icon: 'el-icon-setting',
             index: 'draggable',
-            title: '模块拖拽'
+            title: '轻站小程序'
           },
   	  	  {
   	  	  	icon: 'el-icon-setting',

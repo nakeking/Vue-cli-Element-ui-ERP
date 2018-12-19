@@ -177,6 +177,7 @@
   }
 }
 .main{
+  position: relative;
   width: 375px;
   height: 667px;
   box-shadow: 0 5px 10px #ccc;

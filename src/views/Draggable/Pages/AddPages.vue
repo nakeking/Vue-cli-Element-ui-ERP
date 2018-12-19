@@ -1,5 +1,8 @@
 <template>
   <div class="addpages">
+    <div class="color">
+      
+    </div>
 	  <ul>
       <li v-for="(item, index) in pageList" :key="item.id" class="pages-item" :class="{active: pages === item.path}" @click="gotoPages(item.path)">
 		    <p>{{item.title}}</p>

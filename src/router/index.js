@@ -85,7 +85,7 @@ export default new Router({
 				{
 					path: '/draggable',
 					name: 'draggable',
-					meta: {title: '模块拖拽'},
+					meta: {title: '轻站小程序'},
 					component: Draggable
 				}
 			]

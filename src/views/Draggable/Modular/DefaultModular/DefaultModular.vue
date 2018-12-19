@@ -26,6 +26,7 @@
   width: 100%;
   height: 100%;
   text-align: center;
+  z-index: 1000;
   .img{
   	display: inline-block;
   	width: 156px;

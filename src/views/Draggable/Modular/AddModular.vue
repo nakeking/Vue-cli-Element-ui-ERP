@@ -8,12 +8,12 @@
         </div>
         <div class="modularBox">
           <ul>
-            <drag :modular="modular.basic">
-              <li :key="item.id" v-for="(item, index) in modular.basic" class="item" :data-model="item.name">
-                <i class="el-icon-star-on"></i>
+            <!-- <drag :modular="modular.basic"> -->
+              <li :key="item.id" v-for="(item, index) in modular.basic" class="item" :data-model="item.name" @click="addModular(item)">
+                <i :class="item.icon"></i>
                 <p>{{item.title}}</p>
               </li>
-            </drag>
+            <!-- </drag> -->
           </ul>
         </div>
       </li>
@@ -24,12 +24,12 @@
         </div>
         <div class="modularBox">
           <ul>
-            <drag :modular="modular.interaction">
+            <!-- <drag :modular="modular.interaction"> -->
               <li :key="item.id" v-for="(item, index) in modular.interaction" class="item" :data-control="item.name">
-                <i class="el-icon-star-on"></i>
+                <i :class="item.icon"></i>
                 <p>{{item.title}}</p>
               </li>
-            </drag>
+            <!-- </drag> -->
           </ul>
         </div>
       </li>
@@ -40,12 +40,12 @@
         </div>
         <div class="modularBox">
           <ul>
-            <drag :modular="modular.senior">
+            <!-- <drag :modular="modular.senior"> -->
               <li :key="item.id" v-for="(item, index) in modular.senior" class="item" :data-senior="item.name">
-                <i class="el-icon-star-on"></i>
+                <i :class="item.icon"></i>
                 <p>{{item.title}}</p>
               </li>
-            </drag>
+            <!-- </drag> -->
           </ul>
         </div>
       </li>
@@ -54,13 +54,13 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex';
-  import Drag from 'views/Draggable/Drag/Drag';
+  import {mapState, mapGetters, mapMutations} from 'vuex';
+  // import Drag from 'views/Draggable/Drag/Drag';
   export default{
   	name: "AddModular",
-    components:{
-      Drag
-    },
+    // components:{
+    //   Drag
+    // },
   	data(){
   	  return {
         
@@ -68,11 +68,25 @@
   	},
     computed:{
       ...mapState([
-        'modular'
+        'modular',
+        'currPage'
       ])
     },
     methods:{
-      
+      addModular(item){
+        if(item.parent){
+          var parent = Object.assign({}, this.modular.basic.find((mitem) => {
+            return mitem.name === item.parent
+          }))
+          parent.children = new Array();
+          this.setCurrPageBody({parent, item});
+        }else{
+          this.setCurrPageBody(item);
+        }
+      },
+      ...mapMutations({
+        setCurrPageBody: 'setCurrPageBody'
+      })
     }
   }
 </script>
@@ -102,12 +116,9 @@
       font-size: 14px;
       line-height: 24px;
       color: #798288;
-      width: calc(100% + 17px);
-      width: -webkit-calc(100% + 17px);
-      width: -moz-calc(100% + 17px);
-      width: -ms-calc(100% + 17px);
-      width: -o-calc(100% + 17px);
+      overflow-x: hidden;
       .item{
+        /*box-sizing: border-box;*/
         text-align: center;
         float: left;
         width: 33%;
@@ -128,6 +139,9 @@
       .hover{
         color: #5874d8;
       }
+    }
+    .modularBox::-webkit-scrollbar{
+      width: 0;
     }
   }
 }
